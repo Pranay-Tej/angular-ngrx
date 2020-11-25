@@ -7,6 +7,9 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { ArticleResolver } from './article/article.resolver';
+import { ArticleModule } from './article/article.module';
+import { EffectsModule } from '@ngrx/effects';
 // import { environment } from '../../environments/environment';
 
 @NgModule({
@@ -14,13 +17,15 @@ import { environment } from 'src/environments/environment';
     AppComponent
   ],
   imports: [
+    ArticleModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    EffectsModule.forRoot([]),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [],
+  providers: [ArticleResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
