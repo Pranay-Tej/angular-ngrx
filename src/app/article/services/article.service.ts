@@ -16,11 +16,11 @@ export class ArticleService {
     return this.httpClient.post<Article>(`${environment.api_url}/articles`, article)
   }
 
-  updateArticle(articleId: string): Observable<any> {
+  deleteArticle(articleId: string): Observable<any> {
     return this.httpClient.delete(`${environment.api_url}/articles/${articleId}`);
   }
 
-  updateCourse(articleId: string | number, changes: Partial<Article>): Observable<any> {
+  updateArticle(articleId: string | number, changes: Partial<Article>): Observable<any> {
     return this.httpClient.put(`${environment.api_url}/articles/${articleId}`, changes);
   }
 }
