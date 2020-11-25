@@ -6,17 +6,17 @@ import { StoreModule } from '@ngrx/store';
 import { articleReducer } from './store/article.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { ArticleEffects } from './store/article.effects';
-
-
+import { ArticleListComponent } from './components/article-list/article-list.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [ArticleListComponent],
   imports: [
     CommonModule,
     FormsModule,
     StoreModule.forFeature('articles', articleReducer),
-    EffectsModule.forFeature([ArticleEffects])
+    EffectsModule.forFeature([ArticleEffects]),
   ],
-  providers: [ArticleService]
+  providers: [ArticleService],
+  exports: [ArticleListComponent],
 })
-export class ArticleModule { }
+export class ArticleModule {}
