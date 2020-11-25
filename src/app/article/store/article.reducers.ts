@@ -32,3 +32,5 @@ export const articleReducer = createReducer(
     return adapter.updateOne(action.update, state);
   })
 );
+
+export const { selectAll, selectIds } = adapter.getSelectors();
